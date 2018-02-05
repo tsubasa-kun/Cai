@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#C73E3A</color>
+    <color name="colorPrimaryDark">#C73E3A</color>
+    <color name="colorAccent">#C73E3A</color>
+
+    <drawable name="list_normal">#FFFFFF</drawable>
+    <drawable name="list_pressed">#66C73E3A</drawable>
+</resources>
