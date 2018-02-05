@@ -5,9 +5,11 @@ import android.view.View;
 
 import com.love_cookies.cookie_library.fragment.BaseFragment;
 import com.love_cookies.cookie_library.utils.NetworkUtils;
+import com.love_cookies.cookie_library.widget.CookieTitleBar;
 import com.mario.cai.R;
 
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.ViewInject;
 
 /**
  * Created by mario on 2018/02/05 0005.
@@ -17,13 +19,16 @@ import org.xutils.view.annotation.ContentView;
 @ContentView(R.layout.fragment_news)
 public class NewsFragment extends BaseFragment {
 
+    @ViewInject(R.id.title_bar)
+    private CookieTitleBar titleBar;
+
     /**
      * 初始化控件
      * @param savedInstanceState
      */
     @Override
     public void initWidget(Bundle savedInstanceState) {
-
+        titleBar.setTitle(R.string.main_tab_news);
     }
 
     /**

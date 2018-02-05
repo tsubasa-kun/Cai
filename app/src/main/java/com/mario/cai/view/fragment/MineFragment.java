@@ -32,7 +32,7 @@ public class MineFragment extends BaseFragment {
      */
     @Override
     public void initWidget(Bundle savedInstanceState) {
-        titleBar.setTitle(R.string.app_name);
+        titleBar.setTitle(R.string.main_tab_mine);
         version.setOnClickListener(this);
     }
 

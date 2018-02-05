@@ -6,26 +6,32 @@
     android:orientation="vertical"
     android:background="@color/white">
 
-    <!--内容区域-->
-    <android.support.v4.view.ViewPager
-        android:id="@+id/main_content"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginBottom="50dp"/>
+        android:layout_height="match_parent">
 
-    <!--Tab区域-->
-    <eu.long1.spacetablayout.SpaceTabLayout
-        android:id="@+id/main_tab"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        app:number_of_tabs="three"
-        app:starting_position="one"
-        app:text_one="@string/main_tab_index"
-        app:text_two="@string/main_tab_news"
-        app:text_three="@string/main_tab_mine"
-        app:icon_one="@mipmap/ic_train_white"
-        app:icon_two="@mipmap/ic_reorder_white"
-        app:icon_three="@mipmap/ic_person_white"/>
+        <!--内容区域-->
+        <android.support.v4.view.ViewPager
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp"/>
+
+        <!--Tab区域-->
+        <eu.long1.spacetablayout.SpaceTabLayout
+            android:id="@+id/main_tab"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            app:number_of_tabs="three"
+            app:starting_position="one"
+            app:text_one="@string/main_tab_index"
+            app:text_two="@string/main_tab_news"
+            app:text_three="@string/main_tab_mine"
+            app:icon_one="@mipmap/ic_train_white"
+            app:icon_two="@mipmap/ic_reorder_white"
+            app:icon_three="@mipmap/ic_person_white"/>
+
+    </RelativeLayout>
 
 </LinearLayout>
