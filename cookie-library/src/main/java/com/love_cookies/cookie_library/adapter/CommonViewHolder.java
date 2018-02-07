@@ -100,6 +100,19 @@ public class CommonViewHolder {
     }
 
     /**
+     * 设置TextView文本(模板替换)
+     *
+     * @param viewId
+     * @param text
+     * @return
+     */
+    public CommonViewHolder setTextWithTemplate(int viewId, String text, String template) {
+        TextView textView = getView(viewId);
+        textView.setText(String.format(template, text));
+        return this;
+    }
+
+    /**
      * 设置ImageView资源图片
      *
      * @param viewId
