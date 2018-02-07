@@ -50,7 +50,7 @@ public class VersionActivity extends BaseActivity implements IVersion {
     @Override
     public void initWidget(Bundle savedInstanceState) {
         titleBar.setTitle(R.string.version_title);
-        titleBar.setLeftImageResource(R.drawable.title_btn_back);
+        titleBar.setLeftImageResource(R.drawable.ic_back);
         titleBar.setLeftClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

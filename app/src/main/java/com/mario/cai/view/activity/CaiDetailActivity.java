@@ -49,7 +49,7 @@ public class CaiDetailActivity extends BaseActivity implements ICaiDetail {
         String title = getIntent().getExtras().getString("title", "");
         String api = getIntent().getExtras().getString("api", "");
         titleBar.setTitle(title);
-        titleBar.setLeftImageResource(R.drawable.title_btn_back);
+        titleBar.setLeftImageResource(R.drawable.ic_back);
         titleBar.setLeftClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
