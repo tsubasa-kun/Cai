@@ -9,6 +9,9 @@
 
     <string name="main_tab_mine">我</string>
 
+    <string name="net_error">网络异常</string>
+    <string name="request_failed">请求数据出错</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

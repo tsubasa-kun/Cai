@@ -134,4 +134,24 @@ public class CommonViewHolder {
         }
         return this;
     }
+
+    /**
+     * 设置圆形图片（配合xUtils框架）
+     *
+     * @param viewId
+     * @param imageUrl
+     * @return
+     */
+    public CommonViewHolder setRoundImage(int viewId, String imageUrl) {
+        ImageView imageView = getView(viewId);
+        ImageOptions imageOptions = new ImageOptions.Builder()
+                .setImageScaleType(ImageView.ScaleType.CENTER_CROP)
+                .setLoadingDrawableId(R.mipmap.default_img)
+                .setPlaceholderScaleType(ImageView.ScaleType.CENTER_CROP)
+                .setFailureDrawableId(R.mipmap.default_img)
+                .setCircular(true)
+                .build();
+        x.image().bind(imageView, imageUrl, imageOptions);
+        return this;
+    }
 }

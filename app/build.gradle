@@ -16,13 +16,13 @@ android {
         }
 
         manifestPlaceholders = [
-                JPUSH_PKGNAME : applicationId,
+                JPUSH_PKGNAME: applicationId,
                 JPUSH_APPKEY : "你的appkey", //JPush上注册的包名对应的appkey.
-                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
 
         //为了解决部分第三方库重复打包了META-INF的问题
-        packagingOptions{
+        packagingOptions {
             exclude 'META-INF/LICENSE.txt'
             exclude 'META-INF/NOTICE.txt'
         }
@@ -47,5 +47,5 @@ dependencies {
     compile 'cn.jiguang.sdk:jpush:3.1.1'
     compile 'cn.jiguang.sdk:jcore:1.1.9'
     // LeanCloud 基础包
-    compile ('cn.leancloud.android:avoscloud-sdk:v4.6.4')
+    compile('cn.leancloud.android:avoscloud-sdk:v4.6.4')
 }
