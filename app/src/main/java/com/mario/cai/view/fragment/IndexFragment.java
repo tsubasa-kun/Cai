@@ -182,7 +182,7 @@ public class IndexFragment extends BaseFragment {
     public void initBannerData() {
         imageList.add("assets://banner1.png");
         imageList.add("assets://banner2.png");
-        imageList.add("assets://banner3.png");
+        imageList.add("assets://banner1.png");
     }
 
     /**
@@ -190,56 +190,56 @@ public class IndexFragment extends BaseFragment {
      */
     public void initMenuData() {
         IndexMenuBean dlt = new IndexMenuBean();
-        dlt.setImgUrl("assets://banner3.png");
+        dlt.setImgUrl("assets://banner2.png");
         dlt.setMainLabel("大乐透");
         dlt.setSubLabel("奖池超42亿");
         dlt.setApi(AppConfig.API.DLT);
         menus.add(dlt);
 
         IndexMenuBean ssq = new IndexMenuBean();
-        ssq.setImgUrl("assets://banner3.png");
+        ssq.setImgUrl("assets://banner2.png");
         ssq.setMainLabel("双色球");
         ssq.setSubLabel("大奖等你拿");
         ssq.setApi(AppConfig.API.SSQ);
         menus.add(ssq);
 
         IndexMenuBean fc3d = new IndexMenuBean();
-        fc3d.setImgUrl("assets://banner3.png");
+        fc3d.setImgUrl("assets://banner2.png");
         fc3d.setMainLabel("福彩3D");
         fc3d.setSubLabel("简单赢千元");
         fc3d.setApi(AppConfig.API.FC3D);
         menus.add(fc3d);
 
         IndexMenuBean pl3 = new IndexMenuBean();
-        pl3.setImgUrl("assets://banner3.png");
+        pl3.setImgUrl("assets://banner2.png");
         pl3.setMainLabel("排列3");
         pl3.setSubLabel("加奖千万元");
         pl3.setApi(AppConfig.API.PL3);
         menus.add(pl3);
 
         IndexMenuBean pl5 = new IndexMenuBean();
-        pl5.setImgUrl("assets://banner3.png");
+        pl5.setImgUrl("assets://banner2.png");
         pl5.setMainLabel("排列5");
         pl5.setSubLabel("单注赢千元");
         pl5.setApi(AppConfig.API.PL5);
         menus.add(pl5);
 
         IndexMenuBean qlc = new IndexMenuBean();
-        qlc.setImgUrl("assets://banner3.png");
+        qlc.setImgUrl("assets://banner2.png");
         qlc.setMainLabel("七乐彩");
         qlc.setSubLabel("公益献爱心");
         qlc.setApi(AppConfig.API.QLC);
         menus.add(qlc);
 
         IndexMenuBean qxc = new IndexMenuBean();
-        qxc.setImgUrl("assets://banner3.png");
+        qxc.setImgUrl("assets://banner2.png");
         qxc.setMainLabel("七星彩");
         qxc.setSubLabel("定期开奖");
         qxc.setApi(AppConfig.API.QXC);
         menus.add(qxc);
 
         IndexMenuBean nul = new IndexMenuBean();
-        nul.setImgUrl("assets://banner3.png");
+        nul.setImgUrl("assets://banner1.png");
         nul.setMainLabel("更多奖种");
         nul.setSubLabel("敬请期待");
         nul.setApi("");
