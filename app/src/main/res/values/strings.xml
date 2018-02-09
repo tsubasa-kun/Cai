@@ -3,6 +3,7 @@
 
     <string name="net_error">网络异常</string>
     <string name="request_failed">请求数据出错</string>
+    <string name="submit">提交</string>
 
     <string name="main_tab_index">开奖</string>
 
@@ -10,6 +11,14 @@
 
     <string name="main_tab_setting">设置</string>
     <string name="feedback_title">意见反馈</string>
+    <string name="feedback_tip">请输入您的宝贵意见</string>
+    <string name="contact_tip">请输入您的联系方式：手机/微信/邮箱/QQ</string>
     <string name="about_title">关于软件</string>
+    <string name="about_text">开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。
+    开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。
+    开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。
+    开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。
+    开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。
+    开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。开奖信息一手掌握。</string>
     <string name="version_title">版本信息</string>
 </resources>
