@@ -9,5 +9,7 @@
     <string name="main_tab_news">资讯</string>
 
     <string name="main_tab_setting">设置</string>
+    <string name="feedback_title">意见反馈</string>
+    <string name="about_title">关于软件</string>
     <string name="version_title">版本信息</string>
 </resources>

@@ -12,6 +12,18 @@
         android:layout_height="wrap_content" />
 
     <com.mario.cai.view.widget.SettingItemView
+        android:id="@+id/feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        custom:Title="@string/feedback_title" />
+
+    <com.mario.cai.view.widget.SettingItemView
+        android:id="@+id/about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        custom:Title="@string/about_title" />
+
+    <com.mario.cai.view.widget.SettingItemView
         android:id="@+id/version"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -23,7 +23,9 @@
         <activity android:name=".view.activity.MainActivity" />
         <activity android:name=".view.activity.VersionActivity" />
         <activity android:name=".view.activity.WebActivity" />
-        <activity android:name=".view.activity.CaiDetailActivity"></activity>
+        <activity android:name=".view.activity.CaiDetailActivity" />
+        <activity android:name=".view.activity.FeedbackActivity" />
+        <activity android:name=".view.activity.AboutActivity"></activity>
     </application>
 
 </manifest>

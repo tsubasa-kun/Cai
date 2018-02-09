@@ -7,6 +7,8 @@ import com.love_cookies.cookie_library.fragment.BaseFragment;
 import com.love_cookies.cookie_library.utils.NetworkUtils;
 import com.love_cookies.cookie_library.widget.CookieTitleBar;
 import com.mario.cai.R;
+import com.mario.cai.view.activity.AboutActivity;
+import com.mario.cai.view.activity.FeedbackActivity;
 import com.mario.cai.view.activity.VersionActivity;
 import com.mario.cai.view.widget.SettingItemView;
 
@@ -23,6 +25,10 @@ public class SettingFragment extends BaseFragment {
 
     @ViewInject(R.id.title_bar)
     private CookieTitleBar titleBar;
+    @ViewInject(R.id.feedback)
+    private SettingItemView feedback;
+    @ViewInject(R.id.about)
+    private SettingItemView about;
     @ViewInject(R.id.version)
     private SettingItemView version;
 
@@ -33,6 +39,8 @@ public class SettingFragment extends BaseFragment {
     @Override
     public void initWidget(Bundle savedInstanceState) {
         titleBar.setTitle(R.string.main_tab_setting);
+        feedback.setOnClickListener(this);
+        about.setOnClickListener(this);
         version.setOnClickListener(this);
     }
 
@@ -42,7 +50,17 @@ public class SettingFragment extends BaseFragment {
      */
     @Override
     public void widgetClick(View view) {
-        turn(VersionActivity.class);
+        switch (view.getId()) {
+            case R.id.feedback:
+                turn(FeedbackActivity.class);
+                break;
+            case R.id.about:
+                turn(AboutActivity.class);
+                break;
+            case R.id.version:
+                turn(VersionActivity.class);
+                break;
+        }
     }
 
     /**
