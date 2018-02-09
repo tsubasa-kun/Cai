@@ -8,6 +8,6 @@
 
     <string name="main_tab_news">资讯</string>
 
-    <string name="main_tab_mine">我的</string>
+    <string name="main_tab_setting">设置</string>
     <string name="version_title">版本信息</string>
 </resources>

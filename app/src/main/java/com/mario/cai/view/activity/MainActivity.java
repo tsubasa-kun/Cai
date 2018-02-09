@@ -12,7 +12,7 @@ import com.love_cookies.cookie_library.utils.NetworkUtils;
 import com.love_cookies.cookie_library.utils.ToastUtils;
 import com.mario.cai.R;
 import com.mario.cai.view.fragment.IndexFragment;
-import com.mario.cai.view.fragment.MineFragment;
+import com.mario.cai.view.fragment.SettingFragment;
 import com.mario.cai.view.fragment.NewsFragment;
 
 import org.xutils.view.annotation.ContentView;
@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity {
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(new IndexFragment());
         fragmentList.add(new NewsFragment());
-        fragmentList.add(new MineFragment());
+        fragmentList.add(new SettingFragment());
         //关联内容和tab
         mainTab.initialize(mainContent, getSupportFragmentManager(), fragmentList, savedInstanceState);
         mainContent.setOffscreenPageLimit(3);

@@ -18,8 +18,8 @@ import org.xutils.view.annotation.ViewInject;
  *
  * 我的页
  */
-@ContentView(R.layout.fragment_mine)
-public class MineFragment extends BaseFragment {
+@ContentView(R.layout.fragment_setting)
+public class SettingFragment extends BaseFragment {
 
     @ViewInject(R.id.title_bar)
     private CookieTitleBar titleBar;
@@ -32,7 +32,7 @@ public class MineFragment extends BaseFragment {
      */
     @Override
     public void initWidget(Bundle savedInstanceState) {
-        titleBar.setTitle(R.string.main_tab_mine);
+        titleBar.setTitle(R.string.main_tab_setting);
         version.setOnClickListener(this);
     }
 

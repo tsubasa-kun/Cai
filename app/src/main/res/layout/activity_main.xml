@@ -27,7 +27,7 @@
             app:starting_position="one"
             app:text_one="@string/main_tab_index"
             app:text_two="@string/main_tab_news"
-            app:text_three="@string/main_tab_mine"
+            app:text_three="@string/main_tab_setting"
             app:icon_one="@mipmap/ic_train_white"
             app:icon_two="@mipmap/ic_reorder_white"
             app:icon_three="@mipmap/ic_person_white"/>
