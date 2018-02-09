@@ -28,9 +28,9 @@
             app:text_one="@string/main_tab_index"
             app:text_two="@string/main_tab_news"
             app:text_three="@string/main_tab_setting"
-            app:icon_one="@mipmap/ic_train_white"
-            app:icon_two="@mipmap/ic_reorder_white"
-            app:icon_three="@mipmap/ic_person_white"/>
+            app:icon_one="@drawable/ic_open"
+            app:icon_two="@drawable/ic_news"
+            app:icon_three="@drawable/ic_setting"/>
 
     </RelativeLayout>
 
