@@ -34,7 +34,8 @@ public class NewsBiz implements INewsBiz {
             public void done(List<AVObject> list, AVException e) {
                 NewsListBean newsListBean = new NewsListBean();
                 List<NewsListBean.NewsBean> news = new ArrayList<>();
-                for (AVObject newsItem : list) {
+                for (int i = list.size() - 1; i >= 0; i--) {
+                    AVObject newsItem = list.get(i);
                     NewsListBean.NewsBean newsBean = new NewsListBean.NewsBean();
                     newsBean.setImgUrl(newsItem.getString("img"));
                     newsBean.setTitle(newsItem.getString("title"));
