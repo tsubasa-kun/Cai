@@ -29,13 +29,14 @@ public class NewsBiz implements INewsBiz {
     public void getNewsList(final CallBack callBack) {
 
         AVQuery<AVObject> avQuery = new AVQuery<>("News");
+        // 按时间，降序排列
+        avQuery.orderByDescending("createdAt");
         avQuery.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
                 NewsListBean newsListBean = new NewsListBean();
                 List<NewsListBean.NewsBean> news = new ArrayList<>();
-                for (int i = list.size() - 1; i >= 0; i--) {
-                    AVObject newsItem = list.get(i);
+                for (AVObject newsItem : list) {
                     NewsListBean.NewsBean newsBean = new NewsListBean.NewsBean();
                     newsBean.setImgUrl(newsItem.getString("img"));
                     newsBean.setTitle(newsItem.getString("title"));
