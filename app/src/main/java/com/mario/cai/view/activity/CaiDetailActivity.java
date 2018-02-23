@@ -103,8 +103,8 @@ public class CaiDetailActivity extends BaseActivity implements ICaiDetail {
         adapter = new CommonAdapter<CaiBean.DataBean>(this, R.layout.item_cai_list, caiBean.getData()) {
             @Override
             public void convert(CommonViewHolder holder, CaiBean.DataBean dataBean) {
-                holder.setTextWithTemplate(R.id.expect, dataBean.getExpect(), "第%s期");
-                holder.setTextWithTemplate(R.id.time, dataBean.getOpentime(), "开奖时间：%s");
+                holder.setTextWithTemplate(R.id.expect, dataBean.getExpect(), getString(R.string.expect_label));
+                holder.setTextWithTemplate(R.id.time, dataBean.getOpentime(), getString(R.string.open_time_label));
                 LinearLayout numContent = holder.getView(R.id.num_content);
                 numContent.removeAllViews();
                 String[] nums = dataBean.getOpencode().split("\\+");

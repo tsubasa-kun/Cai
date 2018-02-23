@@ -6,6 +6,8 @@
     <string name="submit">提交</string>
 
     <string name="main_tab_index">开奖</string>
+    <string name="expect_label">第%s期</string>
+    <string name="open_time_label">开奖时间：%s</string>
 
     <string name="main_tab_news">资讯</string>
 
