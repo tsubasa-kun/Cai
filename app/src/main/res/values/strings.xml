@@ -4,6 +4,8 @@
     <string name="net_error">网络异常</string>
     <string name="request_failed">请求数据出错</string>
     <string name="submit">提交</string>
+    <string name="refresh">刷新数据ing...</string>
+    <string name="refresh_success">数据更新成功</string>
 
     <string name="main_tab_index">开奖</string>
     <string name="expect_label">第%s期</string>

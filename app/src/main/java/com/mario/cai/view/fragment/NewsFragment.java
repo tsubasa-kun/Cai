@@ -44,6 +44,13 @@ public class NewsFragment extends BaseFragment implements INews {
     @Override
     public void initWidget(Bundle savedInstanceState) {
         titleBar.setTitle(R.string.main_tab_news);
+        titleBar.addAction(new CookieTitleBar.ImageAction(R.drawable.ic_refresh) {
+            @Override
+            public void performAction(View view) {
+                getNewsList();
+                ToastUtils.show(getContext(), R.string.refresh);
+            }
+        });
         getNewsList();
     }
 
@@ -105,6 +112,7 @@ public class NewsFragment extends BaseFragment implements INews {
                 turn(NewsDetailActivity.class, bundle);
             }
         });
+        ToastUtils.show(getContext(), R.string.refresh_success);
     }
 
     /**
