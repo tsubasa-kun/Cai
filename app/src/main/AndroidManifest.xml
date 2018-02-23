@@ -9,8 +9,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!-- LeanCloud基础模块 END -->
 
+    <!-- LeanCloud基础模块 END -->
     <application
         android:name=".app.CaiApplication"
         android:allowBackup="true"
@@ -32,6 +32,7 @@
         <activity android:name=".view.activity.CaiDetailActivity" />
         <activity android:name=".view.activity.FeedbackActivity" />
         <activity android:name=".view.activity.AboutActivity" />
+        <activity android:name=".view.activity.NewsDetailActivity" />
     </application>
 
 </manifest>

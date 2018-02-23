@@ -10,6 +10,8 @@
     <string name="open_time_label">开奖时间：%s</string>
 
     <string name="main_tab_news">资讯</string>
+    <string name="news_detail_title">资讯详情</string>
+    <string name="news_update_time">发布时间：%s</string>
 
     <string name="main_tab_setting">设置</string>
     <string name="feedback_title">意见反馈</string>

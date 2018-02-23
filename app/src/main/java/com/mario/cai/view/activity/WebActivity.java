@@ -12,7 +12,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.love_cookies.cookie_library.activity.BaseActivity;
+import com.love_cookies.cookie_library.application.ActivityCollections;
 import com.love_cookies.cookie_library.utils.NetworkUtils;
+import com.love_cookies.cookie_library.utils.ToastUtils;
 import com.mario.cai.R;
 
 import org.xutils.view.annotation.ContentView;
@@ -20,6 +22,8 @@ import org.xutils.view.annotation.ViewInject;
 
 @ContentView(R.layout.activity_web)
 public class WebActivity extends BaseActivity {
+
+    private long exitTime;
 
     @ViewInject(R.id.web_view)
     private WebView webView;
@@ -92,15 +96,23 @@ public class WebActivity extends BaseActivity {
     }
 
     /**
-     * 点击返回上一页面而不是退出浏览器
+     * 点击返回上一页面,最后退出浏览器
      * @param keyCode
      * @param event
      * @return
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
-            webView.goBack();
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if (webView.canGoBack()) {
+                webView.goBack();
+            } else if ((System.currentTimeMillis() - exitTime) > 2000) {//点击两次退出逻辑
+                ToastUtils.show(this, R.string.exit_tip);
+                exitTime = System.currentTimeMillis();
+            } else {
+                ActivityCollections.getInstance().finishAllActivity();
+                android.os.Process.killProcess(android.os.Process.myPid());
+            }
             return true;
         }
         return super.onKeyDown(keyCode, event);

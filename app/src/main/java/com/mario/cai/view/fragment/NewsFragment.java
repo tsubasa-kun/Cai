@@ -14,6 +14,7 @@ import com.love_cookies.cookie_library.widget.CookieTitleBar;
 import com.mario.cai.R;
 import com.mario.cai.mobile.bean.NewsListBean;
 import com.mario.cai.presenter.NewsPresenter;
+import com.mario.cai.view.activity.NewsDetailActivity;
 import com.mario.cai.view.interfaces.INews;
 
 import org.xutils.view.annotation.ContentView;
@@ -101,6 +102,7 @@ public class NewsFragment extends BaseFragment implements INews {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("news", newsListBean.getNews().get(i));
+                turn(NewsDetailActivity.class, bundle);
             }
         });
     }
