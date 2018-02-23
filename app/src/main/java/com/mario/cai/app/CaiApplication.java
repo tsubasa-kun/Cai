@@ -2,6 +2,7 @@ package com.mario.cai.app;
 
 import android.widget.ImageView;
 
+import com.avos.avoscloud.AVOSCloud;
 import com.love_cookies.cookie_library.application.BaseApplication;
 import com.love_cookies.cookie_library.utils.SDCardUtils;
 import com.love_cookies.cookie_library.utils.ScreenUtils;
@@ -34,6 +35,10 @@ public class CaiApplication extends BaseApplication {
         super.onCreate();
         initImageOptions();
         initFolder();
+        // 初始化参数依次为 this, AppId, AppKey
+        AVOSCloud.initialize(this,"q5kLAic6iq2TP0kTHEp6bRNT-gzGzoHsz","nxhDlt2QnVpwbIRu2zXhvScu");
+        // 放在 SDK 初始化语句 AVOSCloud.initialize() 后面，只需要调用一次即可
+        AVOSCloud.setDebugLogEnabled(true);
     }
 
     /**
