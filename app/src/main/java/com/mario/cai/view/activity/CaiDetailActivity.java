@@ -33,6 +33,8 @@ public class CaiDetailActivity extends BaseActivity implements ICaiDetail {
 
     @ViewInject(R.id.title_bar)
     private CookieTitleBar titleBar;
+    @ViewInject(R.id.empty_view)
+    private TextView emptyView;
     @ViewInject(R.id.list_view)
     private ListView listView;
 
@@ -100,43 +102,50 @@ public class CaiDetailActivity extends BaseActivity implements ICaiDetail {
      */
     @Override
     public void setCaiList(CaiBean caiBean) {
-        adapter = new CommonAdapter<CaiBean.DataBean>(this, R.layout.item_cai_list, caiBean.getData()) {
-            @Override
-            public void convert(CommonViewHolder holder, CaiBean.DataBean dataBean) {
-                holder.setTextWithTemplate(R.id.expect, dataBean.getExpect(), getString(R.string.expect_label));
-                holder.setTextWithTemplate(R.id.time, dataBean.getOpentime(), getString(R.string.open_time_label));
-                LinearLayout numContent = holder.getView(R.id.num_content);
-                numContent.removeAllViews();
-                String[] nums = dataBean.getOpencode().split("\\+");
-                String[] red = nums[0].split(",");
-                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                lp.setMargins(0, 0, 12, 0);
-                for (int i = 0; i < red.length; i++) {
-                    TextView textView = new TextView(CaiDetailActivity.this);
-                    textView.setLayoutParams(lp);
-                    textView.setBackgroundResource(R.drawable.round_red_bg);
-                    textView.setTextColor(Color.WHITE);
-                    textView.setTextSize(14);
-                    textView.setText(red[i]);
-                    textView.setGravity(Gravity.CENTER);
-                    numContent.addView(textView);
-                }
-                if (nums.length > 1) {
-                    String[] blue = nums[1].split(",");
-                    for (int i = 0; i < blue.length; i++) {
+        if (caiBean.getData() != null && caiBean.getData().size() > 0) {
+            emptyView.setVisibility(View.GONE);
+            listView.setVisibility(View.VISIBLE);
+            adapter = new CommonAdapter<CaiBean.DataBean>(this, R.layout.item_cai_list, caiBean.getData()) {
+                @Override
+                public void convert(CommonViewHolder holder, CaiBean.DataBean dataBean) {
+                    holder.setTextWithTemplate(R.id.expect, dataBean.getExpect(), getString(R.string.expect_label));
+                    holder.setTextWithTemplate(R.id.time, dataBean.getOpentime(), getString(R.string.open_time_label));
+                    LinearLayout numContent = holder.getView(R.id.num_content);
+                    numContent.removeAllViews();
+                    String[] nums = dataBean.getOpencode().split("\\+");
+                    String[] red = nums[0].split(",");
+                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    lp.setMargins(0, 0, 12, 0);
+                    for (int i = 0; i < red.length; i++) {
                         TextView textView = new TextView(CaiDetailActivity.this);
                         textView.setLayoutParams(lp);
-                        textView.setBackgroundResource(R.drawable.round_blue_bg);
+                        textView.setBackgroundResource(R.drawable.round_red_bg);
                         textView.setTextColor(Color.WHITE);
                         textView.setTextSize(14);
-                        textView.setText(blue[i]);
+                        textView.setText(red[i]);
                         textView.setGravity(Gravity.CENTER);
                         numContent.addView(textView);
                     }
+                    if (nums.length > 1) {
+                        String[] blue = nums[1].split(",");
+                        for (int i = 0; i < blue.length; i++) {
+                            TextView textView = new TextView(CaiDetailActivity.this);
+                            textView.setLayoutParams(lp);
+                            textView.setBackgroundResource(R.drawable.round_blue_bg);
+                            textView.setTextColor(Color.WHITE);
+                            textView.setTextSize(14);
+                            textView.setText(blue[i]);
+                            textView.setGravity(Gravity.CENTER);
+                            numContent.addView(textView);
+                        }
+                    }
                 }
-            }
-        };
-        listView.setAdapter(adapter);
+            };
+            listView.setAdapter(adapter);
+        } else {
+            emptyView.setVisibility(View.VISIBLE);
+            listView.setVisibility(View.GONE);
+        }
     }
 
     /**

@@ -36,18 +36,22 @@ public class NewsBiz implements INewsBiz {
             public void done(List<AVObject> list, AVException e) {
                 NewsListBean newsListBean = new NewsListBean();
                 List<NewsListBean.NewsBean> news = new ArrayList<>();
-                for (AVObject newsItem : list) {
-                    NewsListBean.NewsBean newsBean = new NewsListBean.NewsBean();
-                    newsBean.setImgUrl(newsItem.getString("img"));
-                    newsBean.setTitle(newsItem.getString("title"));
-                    newsBean.setContent(newsItem.getString("content"));
-                    Date update = newsItem.getUpdatedAt();
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-                    newsBean.setTime(sdf.format(update));
-                    news.add(newsBean);
+                if (list != null && list.size() >0) {
+                    for (AVObject newsItem : list) {
+                        NewsListBean.NewsBean newsBean = new NewsListBean.NewsBean();
+                        newsBean.setImgUrl(newsItem.getString("img"));
+                        newsBean.setTitle(newsItem.getString("title"));
+                        newsBean.setContent(newsItem.getString("content"));
+                        Date update = newsItem.getUpdatedAt();
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                        newsBean.setTime(sdf.format(update));
+                        news.add(newsBean);
+                    }
+                    newsListBean.setNews(news);
+                    callBack.onSuccess(newsListBean);
+                } else {
+                    callBack.onSuccess(newsListBean);
                 }
-                newsListBean.setNews(news);
-                callBack.onSuccess(newsListBean);
             }
         });
     }

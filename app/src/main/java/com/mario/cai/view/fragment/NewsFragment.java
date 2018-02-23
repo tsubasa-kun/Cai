@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.love_cookies.cookie_library.adapter.CommonAdapter;
 import com.love_cookies.cookie_library.adapter.CommonViewHolder;
@@ -30,6 +31,8 @@ public class NewsFragment extends BaseFragment implements INews {
 
     @ViewInject(R.id.title_bar)
     private CookieTitleBar titleBar;
+    @ViewInject(R.id.empty_view)
+    private TextView emptyView;
     @ViewInject(R.id.list_view)
     private ListView listView;
 
@@ -94,24 +97,31 @@ public class NewsFragment extends BaseFragment implements INews {
      */
     @Override
     public void setNewsList(final NewsListBean newsListBean) {
-        adapter = new CommonAdapter<NewsListBean.NewsBean>(getContext(), R.layout.item_news_list, newsListBean.getNews()) {
-            @Override
-            public void convert(CommonViewHolder holder, NewsListBean.NewsBean newsBean) {
-                holder.setImage(R.id.img, newsBean.getImgUrl());
-                holder.setText(R.id.title, newsBean.getTitle());
-                holder.setText(R.id.content, newsBean.getContent());
-                holder.setText(R.id.time, newsBean.getTime());
-            }
-        };
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("news", newsListBean.getNews().get(i));
-                turn(NewsDetailActivity.class, bundle);
-            }
-        });
+        if (newsListBean.getNews() != null && newsListBean.getNews().size() > 0) {
+            emptyView.setVisibility(View.GONE);
+            listView.setVisibility(View.VISIBLE);
+            adapter = new CommonAdapter<NewsListBean.NewsBean>(getContext(), R.layout.item_news_list, newsListBean.getNews()) {
+                @Override
+                public void convert(CommonViewHolder holder, NewsListBean.NewsBean newsBean) {
+                    holder.setImage(R.id.img, newsBean.getImgUrl());
+                    holder.setText(R.id.title, newsBean.getTitle());
+                    holder.setText(R.id.content, newsBean.getContent());
+                    holder.setText(R.id.time, newsBean.getTime());
+                }
+            };
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("news", newsListBean.getNews().get(i));
+                    turn(NewsDetailActivity.class, bundle);
+                }
+            });
+        } else {
+            emptyView.setVisibility(View.VISIBLE);
+            listView.setVisibility(View.GONE);
+        }
         ToastUtils.show(getContext(), R.string.refresh_success);
     }
 
