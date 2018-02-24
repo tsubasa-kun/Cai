@@ -27,7 +27,6 @@ public class NewsBiz implements INewsBiz {
      */
     @Override
     public void getNewsList(final CallBack callBack) {
-
         AVQuery<AVObject> avQuery = new AVQuery<>("News");
         // 按时间，降序排列
         avQuery.orderByDescending("createdAt");

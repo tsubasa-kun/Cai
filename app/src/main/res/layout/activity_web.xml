@@ -6,6 +6,13 @@
     android:orientation="vertical"
     android:background="@color/white">
 
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+        android:max="100"/>
+
     <WebView
         android:id="@+id/web_view"
         android:layout_width="match_parent"

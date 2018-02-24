@@ -10,6 +10,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 import com.love_cookies.cookie_library.activity.BaseActivity;
 import com.love_cookies.cookie_library.application.ActivityCollections;
@@ -25,6 +26,8 @@ public class WebActivity extends BaseActivity {
 
     private long exitTime;
 
+    @ViewInject(R.id.progress)
+    private ProgressBar progress;
     @ViewInject(R.id.web_view)
     private WebView webView;
 
@@ -52,10 +55,20 @@ public class WebActivity extends BaseActivity {
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true); //支持通过JS打开新窗口
         webSettings.setLoadsImagesAutomatically(true); //支持自动加载图片
         webSettings.setDefaultTextEncodingName("utf-8");//设置编码格式
-        webView.setWebChromeClient(new WebChromeClient());
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                super.onProgressChanged(view, newProgress);
+                progress.setProgress(newProgress);
+                if (newProgress == 100) {
+                    progress.setVisibility(View.GONE);
+                }
+            }
+        });
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                progress.setVisibility(View.VISIBLE);
                 view.loadUrl(url);
                 return true;
             }
@@ -65,7 +78,10 @@ public class WebActivity extends BaseActivity {
                 handler.proceed();
             }
         });
-        webView.canGoBack();
+
+        progress.setVisibility(View.VISIBLE);
+        String webUrl = getIntent().getExtras().getString("webUrl", "");
+        webView.loadUrl(webUrl);
     }
 
     /**
@@ -106,6 +122,7 @@ public class WebActivity extends BaseActivity {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             if (webView.canGoBack()) {
                 webView.goBack();
+                progress.setVisibility(View.VISIBLE);
             } else if ((System.currentTimeMillis() - exitTime) > 2000) {//点击两次退出逻辑
                 ToastUtils.show(this, R.string.exit_tip);
                 exitTime = System.currentTimeMillis();

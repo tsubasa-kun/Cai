@@ -5,12 +5,18 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.love_cookies.cookie_library.activity.BaseActivity;
 import com.love_cookies.cookie_library.utils.NetworkUtils;
 import com.mario.cai.R;
+import com.mario.cai.presenter.SplashPresenter;
+import com.mario.cai.view.interfaces.ISplahs;
 
+import org.xutils.image.ImageOptions;
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
 /**
  * Created by mario on 2016/12/20 0020.
@@ -18,15 +24,30 @@ import org.xutils.view.annotation.ContentView;
  * 启动页
  */
 @ContentView(R.layout.activity_splash)
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends BaseActivity implements ISplahs {
+
+    @ViewInject(R.id.splash_img)
+    private ImageView splashImg;
+
+    private SplashPresenter splashPresenter = new SplashPresenter(this);
+    private String webUrl = "";
 
     private final int SPLASH_DISPLAY_DURATION = 3000;//启动页显示时长
     private Looper looper = Looper.myLooper();
     private Handler handler = new Handler(looper);
-    private Runnable runnable = new Runnable() {
+    private Runnable toMain = new Runnable() {
         @Override
         public void run() {
             turnThenFinish(MainActivity.class);
+        }
+    };
+
+    private Runnable toWeb = new Runnable() {
+        @Override
+        public void run() {
+            Bundle bundle = new Bundle();
+            bundle.putString("webUrl", webUrl);
+            turnThenFinish(WebActivity.class, bundle);
         }
     };
 
@@ -36,7 +57,8 @@ public class SplashActivity extends BaseActivity {
      */
     @Override
     public void initWidget(Bundle savedInstanceState) {
-        handler.postDelayed(runnable, SPLASH_DISPLAY_DURATION);
+        getSplashImg();
+        checkHybrid();
     }
 
     /**
@@ -74,9 +96,58 @@ public class SplashActivity extends BaseActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            handler.removeCallbacks(runnable);
+            handler.removeCallbacks(toMain);
+            handler.removeCallbacks(toWeb);
         }
         return super.onKeyDown(keyCode, event);
     }
 
+    /**
+     * 获取启动图片
+     */
+    @Override
+    public void getSplashImg() {
+        splashPresenter.getSplashImg();
+    }
+
+    /**
+     * 检查混合应用
+     */
+    @Override
+    public void checkHybrid() {
+        splashPresenter.checkHybrid();
+    }
+
+    /**
+     * 设置启动图片
+     * @param url
+     */
+    @Override
+    public void setSplashImg(String url) {
+        ImageOptions imageOptions = new ImageOptions.Builder()
+                .setImageScaleType(ImageView.ScaleType.CENTER_CROP)
+                .setLoadingDrawableId(R.mipmap.splash_bg)
+                .setPlaceholderScaleType(ImageView.ScaleType.CENTER_CROP)
+                .setFailureDrawableId(R.mipmap.splash_bg)
+                .build();
+        x.image().bind(splashImg, url, imageOptions);
+    }
+
+    /**
+     * 设置混合应用
+     * @param url
+     */
+    @Override
+    public void setHybrid(String url) {
+        webUrl = url;
+        handler.postDelayed(toWeb, SPLASH_DISPLAY_DURATION);
+    }
+
+    /**
+     * 设置原生应用
+     */
+    @Override
+    public void setNative() {
+        handler.postDelayed(toMain, SPLASH_DISPLAY_DURATION);
+    }
 }

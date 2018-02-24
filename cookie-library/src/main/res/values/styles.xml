@@ -13,7 +13,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/GINSYU</item>
         <item name="colorPrimaryDark">@color/GINSYU</item>
-        <item name="colorAccent">@color/GINSYU</item>
+        <item name="colorAccent">@color/YAMABUKI</item>
         <item name="android:windowAnimationStyle">@style/Sliding_Animations</item>
     </style>
 
